@@ -9,6 +9,6 @@ public interface UserService {
     List<UserEntity> findAllUser();
     Optional<UserEntity> findById(Long id);
     UserEntity createUser(UserEntity userEntity);
-    UserEntity updateUser(UserEntity userEntity);
+    UserEntity updateUser(UserEntity userEntity, Long id);
     void deleteUser(Long id);
 }
