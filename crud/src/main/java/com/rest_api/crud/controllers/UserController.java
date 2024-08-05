@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/v1")
 public class UserController {
 
     private final UserService userService;
@@ -29,27 +29,27 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping
+    @GetMapping("getAllRegisteredUsers")
     public List<UserEntity> findAllUser() {
         return userService.findAllUser();
     }
-
-    @GetMapping("'/{id}'")
-    public Optional<UserEntity> findUserById(@PathVariable("id") Long id) {
-        return userService.findById(id);
-    }
     
-    @PostMapping
+    @PostMapping("createUser")
     public UserEntity createUser(@RequestBody UserEntity userEntity) {
         return userService.createUser(userEntity);
     }
 
-    @PutMapping("/{id}")
+    @GetMapping("getUserDetails/{id}")
+    public Optional<UserEntity> findUserById(@PathVariable("id") Long id) {
+        return userService.findById(id);
+    }
+
+    @PutMapping("updateUser/{id}")
     public UserEntity updateUser(@RequestBody UserEntity userEntity) {
         return userService.updateUser(userEntity);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("deactivateUser/{id}")
     public void deleteUser(@PathVariable("id") Long id) {
         userService.deleteUser(id);
     }
