@@ -45,8 +45,8 @@ public class UserController {
     }
 
     @PutMapping("updateUser/{id}")
-    public UserEntity updateUser(@RequestBody UserEntity userEntity) {
-        return userService.updateUser(userEntity);
+    public UserEntity updateUser(@RequestBody UserEntity userEntity, @PathVariable Long id) {
+        return userService.updateUser(userEntity, id);
     }
 
     @DeleteMapping("deactivateUser/{id}")
