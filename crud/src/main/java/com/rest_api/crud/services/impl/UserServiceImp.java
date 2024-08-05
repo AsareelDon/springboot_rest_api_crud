@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.rest_api.crud.entity.UserEntity;
 import com.rest_api.crud.repository.UserRepository;
@@ -34,7 +35,8 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public UserEntity updateUser(UserEntity userEntity) {
+    public UserEntity updateUser(UserEntity userEntity, Long id) {
+        userEntity.setId(id);
         return userRepository.save(userEntity);
     }
 
